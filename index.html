@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#20172d" />
+  <title>Surprise for Maidhuri🎂</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+  <audio
+    id="birthday-song"
+    src="./birthday-song.mpeg"
+    loop
+    preload="auto"
+  ></audio>
+
+  <div id="confetti-container" aria-hidden="true"></div>
+
+  <main>
+    <!-- SCREEN 1: INTRO -->
+    <section id="home" class="screen hero active">
+      <div class="floating-decorations" aria-hidden="true">
+        <div class="floating-icon icon-nine">🕷️</div>
+        <div class="floating-icon icon-two">🕸️</div>
+        <div class="floating-icon icon-three">🔴</div>
+        <div class="floating-icon icon-one">🕷</div>
+        <div class="floating-icon icon-six">💥</div>
+        <div class="floating-icon icon-seven">🕸️</div>
+        <div class="floating-icon icon-eight">🔵</div>
+        <div class="floating-icon icon-ten">🕷️</div>
+        <div class="floating-icon icon-eleven">⚡</div>
+        <div class="floating-icon icon-four">🕸</div>
+        <div class="floating-icon icon-five">🕷️</div>
+        <div class="floating-icon icon-twelve">💥</div>
+      </div>
+
+      <p class="eyebrow">A Little Surprise for My Favourite Human</p>
+
+      <h1>Someone's getting<br /> <span>older.</span> Again.</h1>
+
+      <p class="subtitle">
+        I tested this surprise just for you.
+        If you cry, that's an expected result.🥹
+      </p>
+
+      <div class="gift" aria-hidden="true">🎁</div>
+
+      <button id="open-gift" class="btn btn-primary">
+        Open your surprise 🎁
+      </button>
+
+      <p class="tiny-note">Maidhuriii.. Ready? 🥹</p>
+    </section>
+
+    <!-- SCREEN 2: BIRTHDAY WISH -->
+    <section id="wish" class="screen content-screen">
+      <h2>HAPPY BIRTHDAY <span id="friend-name-heading">Mam</span>😍</h2>
+
+      <p class="subtitle">
+        Congratulations! You're officially eligible to have a matrimony profile made.💍😂
+      </p>
+
+      <!-- Interactive birthday cake -->
+      <div class="wish-cake-wrap">
+        <div class="wish-cake-scene" aria-hidden="true">
+          <span class="wish-sparkle wish-sparkle-one">✦</span>
+          <span class="wish-sparkle wish-sparkle-two">✧</span>
+          <span class="wish-sparkle wish-sparkle-three">✦</span>
+
+          <div class="wish-candles">
+            <div class="wish-candle">
+              <span class="wish-flame"></span>
+            </div>
+            <div class="wish-candle">
+              <span class="wish-flame"></span>
+            </div>
+            <div class="wish-candle">
+              <span class="wish-flame"></span>
+            </div>
+          </div>
+
+          <div class="wish-cake-tier wish-tier-top"></div>
+          <div class="wish-cake-tier wish-tier-middle"></div>
+          <div class="wish-cake-tier wish-tier-bottom"></div>
+        </div>
+
+        <p id="wish-cake-message" class="wish-cake-message" aria-live="polite">
+          🎂 Make a wish and blow out the candles! 🎂
+        </p>
+
+        <button id="blow-candles" class="btn btn-primary wish-cake-button">
+          Blow out the candles 💨
+        </button>
+
+        <button
+          id="continue-after-wish"
+          class="btn btn-primary wish-cake-button"
+          data-go="memories"
+          hidden
+        >
+          Continue to the memories
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: MEMORIES -->
+    <section id="memories" class="screen content-screen">
+      <h2>Our memory <span>Book.</span> 💗</h2>
+
+      <p class="subtitle">
+        Day by Day how close we have become. Some of the moments we have shared together.
+      </p>
+
+      <div class="memory-grid">
+        <article class="memory-card">
+          <div class="memory-photo photo-one">
+            <img
+              src="images/first-longest-call.jpeg"
+              alt="Our first longest call together"
+            />
+          </div>
+
+          <h3>Our First Longest Call Together 💚</h3>
+          <p>
+            One call, endless conversations, and a memory I'll always keep. 🫶
+          </p>
+        </article>
+
+        <article class="memory-card">
+          <div class="memory-photo photo-two">
+            <img
+              src="images/from-teams-to-bangalore.jpeg"
+              alt="From Teams to Bangalore"
+            />
+          </div>
+
+          <h3>From Teams to Bangalore 🚌</h3>
+          <p>
+            Started with a Teams conversation. Turned into a bus ticket to Bangalore.❤️
+          </p>
+        </article>
+
+        <article class="memory-card">
+          <div class="memory-photo photo-three">
+            <img
+              src="images/from-colleagues-to-comfort-people.jpeg"
+              alt="From colleagues to comfort people"
+            />
+          </div>
+
+          <h3>Colleagues to comfort people💚</h3>
+          <p>
+            Never felt this comfortable with someone outside my family.🥹
+          </p>
+        </article>
+      </div>
+
+      <button class="btn btn-primary" data-go="letter">
+        One last surprise 💌
+      </button>
+    </section>
+
+    <!-- SCREEN 4: EMOTIONAL LETTER -->
+    <section id="letter" class="screen content-screen">
+      <div class="letter-icon">💌</div>
+
+      <h2>Okay,Let My heart<br /><span>Talk</span></h2>
+
+      <div class="letter-card">
+        <p>Heyy okayy <span id="friend-name-letter"></span></p>
+
+        <p>
+           I don't know what your reaction will be after seeing this, but fineee! <br/>
+           I honestly thought I shouldn't get attached to anyone in iDigi 
+           because I've always felt I'm bad at maintaining friendships. 
+           So I decided not to get too close to anyone.
+        </p>
+
+        <p>
+          But somehow, you became an unexpected exception. Initially, 
+          I thought you were just a normal friend, but slowly things changed. 
+          Especially the way you cared for me that one day... 
+          I don't know how to explain it, but it genuinely meant a lot to me.🥹
+        </p>
+
+        <p>
+          And I know I've never properly thanked you, 
+          so let me take this chance to thank you for everything you've done for me, 
+          especially during the times I felt low. 
+          You might not even realise how much those little things meant to me.🩵
+        </p>
+
+        <p>
+          And you know what, I never imagined I'd feel this much paasam for someone 
+          who doesn't even speak my local language! 😂 
+          I always thought language was something that connected people, 
+          but you made me realise that you don't really need to speak the same language 
+          to understand or care for someone.😌
+        </p>
+        
+        <p>
+          I really hope we stay like this for a long, long time. 
+          Even if we end up in different companies, don't disappear, okay? 
+          Whenever you feel low or have something to share, just call me. I'm here, I'm here! 🫂
+        </p>
+
+        <p class="signature">
+          <br/>That's it. Just Blessed❤️
+
+        <br/>
+          <span>Signing off, <br/> Cute Girl🐵</span>
+        </p>
+      </div>
+
+      <button id="celebrate" class="btn btn-primary">
+        One last birthday celebration 🎉
+      </button>
+
+      <button id="restart" class="btn btn-secondary">
+        Replay the surprise ↺
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with Paasam by Deepzz🐵</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,886 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* =========================================
+   GLOBAL STYLES
+   ========================================= */
+
+:root {
+  --bg: #080808;
+  --panel: #171717;
+  --pink: #FF3045;
+  --pink-light: #FCA5A5;
+  --purple: #B91C1C;
+  --white: #F8FAFC;
+  --muted: #D0C5C7;
+  --border: rgba(252, 165, 165, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(185, 28, 28, 0.35),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(127, 29, 29, 0.25),
+      transparent 40%
+    ),
+    var(--bg);
+
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  width: min(1000px, 90%);
+  margin: auto;
+}
+
+/* =========================================
+   SCREEN NAVIGATION
+   ========================================= */
+
+.screen {
+  display: none;
+  animation: enter 0.55s ease both;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   HEADINGS AND TEXT
+   ========================================= */
+
+.hero h1,
+h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 4.7rem);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin-top: 18px;
+}
+
+h1 span,
+h2 span {
+  background: linear-gradient(100deg, #FF3045, #B91C1C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--pink);
+}
+
+.subtitle {
+  max-width: 580px;
+  margin: 20px auto 0;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.tiny-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 18px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* =========================================
+   INTRO SCREEN
+   ========================================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 76vh;
+  justify-content: center;
+  text-align: center;
+  padding: 55px 0 75px;
+}
+
+#home {
+  min-height: 100vh;
+  height: auto;
+  padding: 35px 0 25px;
+  gap: 16px;
+}
+
+#home h1 {
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.08;
+  margin: 12px 0;
+}
+
+#home .subtitle {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.gift {
+  font-size: 6rem;
+  margin: 26px 0;
+  filter: drop-shadow(0 10px 28px rgba(255, 48, 69, 0.2));
+  animation: bob 2.5s ease-in-out infinite;
+}
+
+#home .gift {
+  font-size: 65px;
+  margin: 10px 0;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 24px;
+  font-weight: 800;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.btn-primary {
+  color: #FFFFFF;
+  background: linear-gradient(110deg, #991B1B, #EF233C);
+  box-shadow: 0 8px 28px rgba(239, 35, 60, 0.22);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 12px 35px rgba(185, 28, 28, 0.3),
+    0 8px 30px rgba(239, 35, 60, 0.25);
+}
+
+.btn-secondary {
+  margin-top: 12px;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+/* =========================================
+   FLOATING SPIDER-MAN DECORATIONS
+   ========================================= */
+
+.floating-decorations {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-icon {
+  position: absolute;
+  display: block;
+  bottom: -60px;
+  left: var(--left);
+  font-size: var(--size, 2rem);
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+
+  animation:
+    floatAcross var(--duration, 7s) linear
+    var(--delay, 0s) infinite;
+
+  will-change: transform, opacity;
+}
+
+/* Individual positions and animation speeds */
+
+.icon-one {
+  --left: 5%;
+  --size: 2.5rem;
+  --duration: 8s;
+  --delay: 0s;
+}
+
+.icon-two {
+  --left: 15%;
+  --size: 1.8rem;
+  --duration: 6s;
+  --delay: 1s;
+}
+
+.icon-three {
+  --left: 25%;
+  --size: 2rem;
+  --duration: 9s;
+  --delay: 2s;
+}
+
+.icon-four {
+  --left: 35%;
+  --size: 2.8rem;
+  --duration: 7s;
+  --delay: 0.5s;
+}
+
+.icon-five {
+  --left: 45%;
+  --size: 1.6rem;
+  --duration: 8s;
+  --delay: 2.5s;
+}
+
+.icon-six {
+  --left: 55%;
+  --size: 2.2rem;
+  --duration: 6.5s;
+  --delay: 1.5s;
+}
+
+.icon-seven {
+  --left: 65%;
+  --size: 2.6rem;
+  --duration: 9s;
+  --delay: 3s;
+}
+
+.icon-eight {
+  --left: 75%;
+  --size: 1.8rem;
+  --duration: 7.5s;
+  --delay: 2s;
+}
+
+.icon-nine {
+  --left: 85%;
+  --size: 2.1rem;
+  --duration: 8.5s;
+  --delay: 4s;
+}
+
+.icon-ten {
+  --left: 92%;
+  --size: 2.4rem;
+  --duration: 6s;
+  --delay: 1s;
+}
+
+.icon-eleven {
+  --left: 40%;
+  --size: 2rem;
+  --duration: 7s;
+  --delay: 3.5s;
+}
+
+.icon-twelve {
+  --left: 70%;
+  --size: 2.3rem;
+  --duration: 8s;
+  --delay: 4.5s;
+}
+
+/* Floating animation */
+
+@keyframes floatAcross {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-12deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  30% {
+    transform: translate3d(25px, -25vh, 0) rotate(10deg);
+    opacity: 1;
+  }
+
+  55% {
+    transform: translate3d(-15px, -50vh, 0) rotate(-5deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate3d(30px, -75vh, 0) rotate(12deg);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translate3d(-20px, -105vh, 0) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+/* Keep intro content above floating decorations */
+
+.hero > *:not(.floating-decorations):not(.orb) {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   OTHER CONTENT SCREENS
+   ========================================= */
+
+.content-screen {
+  min-height: 75vh;
+  justify-content: center;
+  padding: 55px 0 70px;
+  text-align: center;
+}
+
+.content-screen h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+#wish {
+  min-height: 100vh;
+  height: auto;
+  padding: 30px 0;
+  gap: 12px;
+}
+
+#wish h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.15;
+  margin: 10px 0;
+}
+
+#wish .subtitle {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+
+/* =========================================
+   INTERACTIVE SPIDER-MAN BIRTHDAY CAKE
+   ========================================= */
+
+.wish-cake-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 0 8px;
+}
+
+.wish-cake-scene {
+  position: relative;
+  width: min(380px, 90vw);
+  height: 330px;
+  margin: 12px auto -34px;
+  isolation: isolate;
+  transform: scale(0.88);
+  transform-origin: top center;
+}
+
+/* Cake tiers */
+.wish-cake-tier {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border: 3px solid #ffaaaa;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(239, 35, 60, 0.28),
+    inset 0 5px 12px rgba(255, 255, 255, 0.2),
+    inset 0 -12px 18px rgba(40, 0, 0, 0.25);
+}
+
+/* Fine spiderweb pattern */
+.wish-cake-tier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 0%,
+      transparent 0deg 14deg,
+      rgba(255, 255, 255, 0.7) 14.5deg 15deg,
+      transparent 15.5deg 30deg
+    ),
+    repeating-radial-gradient(
+      circle at 50% 0%,
+      transparent 0 13px,
+      rgba(255, 255, 255, 0.65) 14px 15px,
+      transparent 16px 23px
+    );
+  pointer-events: none;
+}
+
+/* Top tier */
+.wish-tier-top {
+  top: 76px;
+  width: 42%;
+  height: 75px;
+  border-radius: 48% 48% 9px 9px;
+  background: linear-gradient(
+    110deg,
+    #ff9b9b 0%,
+    #e94b55 40%,
+    #a90f20 100%
+  );
+  border-color: #ffd0d0;
+}
+
+/* Middle tier */
+.wish-tier-middle {
+  top: 137px;
+  width: 68%;
+  height: 83px;
+  border-radius: 38% 38% 10px 10px;
+  background: linear-gradient(
+    110deg,
+    #ff555f 0%,
+    #d51f31 48%,
+    #790b19 100%
+  );
+}
+
+/* Bottom tier */
+.wish-tier-bottom {
+  top: 207px;
+  width: 94%;
+  height: 94px;
+  border-radius: 34% 34% 8px 8px;
+  background: linear-gradient(
+    110deg,
+    #ff747b 0%,
+    #e52b3a 45%,
+    #850c1b 100%
+  );
+}
+
+/* Spider details on the cake */
+.wish-tier-middle::after,
+.wish-tier-bottom::after {
+  content: "🕷";
+  position: absolute;
+  right: 13%;
+  top: 40%;
+  font-size: 23px;
+  filter: grayscale(1) brightness(0.25);
+  opacity: 0.8;
+}
+
+/* Candles */
+.wish-candles {
+  position: absolute;
+  z-index: 5;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 27px;
+}
+
+.wish-candle {
+  position: relative;
+  width: 15px;
+  height: 55px;
+  border-radius: 5px 5px 3px 3px;
+  background: repeating-linear-gradient(
+    135deg,
+    #fff 0 9px,
+    #e50925 9px 16px
+  );
+  box-shadow:
+    2px 3px 7px rgba(0, 0, 0, 0.35),
+    inset -3px 0 4px rgba(0, 0, 0, 0.18);
+}
+
+/* Candle flames */
+.wish-flame {
+  position: absolute;
+  top: -22px;
+  left: 3px;
+  width: 10px;
+  height: 18px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: linear-gradient(
+    135deg,
+    #fff9c4,
+    #ffb02e 65%,
+    #ff5e00
+  );
+  box-shadow:
+    0 0 8px #ffd166,
+    0 0 17px rgba(255, 145, 0, 0.8),
+    0 0 28px rgba(255, 80, 0, 0.35);
+  animation: wish-flame-flicker 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes wish-flame-flicker {
+  0% {
+    transform: rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-38deg) scale(0.85);
+    opacity: 0.85;
+  }
+}
+
+/* Cake sparkles */
+.wish-sparkle {
+  position: absolute;
+  z-index: 6;
+  color: #ff718b;
+  font-size: 30px;
+  text-shadow: 0 0 14px rgba(255, 31, 61, 0.8);
+  animation: wish-sparkle-float 2s ease-in-out infinite alternate;
+}
+
+.wish-sparkle-one {
+  top: 82px;
+  left: 2%;
+}
+
+.wish-sparkle-two {
+  top: 150px;
+  right: 1%;
+  animation-delay: 0.5s;
+}
+
+.wish-sparkle-three {
+  bottom: 22px;
+  left: 8%;
+  animation-delay: 1s;
+}
+
+@keyframes wish-sparkle-float {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-12px) rotate(25deg);
+  }
+}
+
+/* Cake message and buttons */
+.wish-cake-message {
+  color: var(--white);
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.6;
+  margin: 4px 0 18px;
+}
+
+.wish-cake-button {
+  margin: 5px 0;
+}
+
+.wish-cake-button[hidden] {
+  display: none !important;
+}
+
+/* After blowing out candles */
+.wish-cake-wrap.blown .wish-flame {
+  display: none;
+}
+
+.wish-cake-wrap.blown .wish-candle::after {
+  content: "〰";
+  position: absolute;
+  top: -29px;
+  left: -3px;
+  color: #fca5a5;
+  font-size: 24px;
+  animation: wish-smoke-rise 1.2s ease-out forwards;
+}
+
+@keyframes wish-smoke-rise {
+  from {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+}
+
+/* =========================================
+   MEMORY CARDS
+   ========================================= */
+
+.memory-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 16px;
+  margin: 35px 0 18px;
+  text-align: left;
+}
+
+.memory-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding-bottom: 20px;
+  background: rgba(39, 18, 22, 0.65);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.memory-card:hover {
+  border-color: rgba(255, 31, 61, 0.5);
+  transform: translateY(-4px);
+}
+
+/* Keep all memory images the same size */
+
+.memory-photo {
+  height: 260px;
+  min-height: 260px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #090909;
+}
+
+.memory-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  /* Zoom out the pictures to show the complete image */
+  object-fit: contain;
+  object-position: center;
+}
+
+.photo-one {
+  background: linear-gradient(135deg, #450A0A, #EF4444);
+}
+
+.photo-two {
+  background: #090909;
+}
+
+.photo-three {
+  background: linear-gradient(135deg, #7F1D1D, #EF233C);
+}
+
+.memory-card h3,
+.memory-card p {
+  margin-left: 17px;
+  margin-right: 17px;
+}
+
+.memory-card h3 {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.memory-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   FINAL LETTER PAGE
+   ========================================= */
+
+#letter {
+  min-height: 100vh;
+  height: auto;
+  justify-content: flex-start;
+  padding: 25px 0 40px;
+}
+
+.letter-icon {
+  font-size: 3.5rem;
+  margin: 5px 0 15px;
+}
+
+#letter h2 {
+  margin-top: 5px;
+}
+
+.letter-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 26px;
+  margin: 25px 0;
+
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(39, 18, 22, 0.95),
+    rgba(9, 9, 11, 0.9)
+  );
+
+  text-align: left;
+  line-height: 1.9;
+  color: #E0EAF2;
+}
+
+.letter-card p {
+  margin-bottom: 18px;
+}
+
+.letter-card p:first-child {
+  color: var(--pink);
+  font-weight: 800;
+}
+
+.letter-card .signature {
+  color: var(--pink-light);
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.signature span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+  padding: 25px 15px 35px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* =========================================
+   CONFETTI
+   ========================================= */
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 100;
+  pointer-events: none;
+
+  animation: fall var(--duration, 3s) linear forwards;
+}
+
+/* =========================================
+   GENERAL ANIMATIONS
+   ========================================= */
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translate(
+      var(--drift, 80px),
+      110vh
+    ) rotate(720deg);
+
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   TABLET AND MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 72vh;
+  }
+
+  .hero h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .subtitle {
+    font-size: 0.93rem;
+  }
+
+  .roast-grid,
+  .memory-grid {
+    grid-template-columns: 1fr;
+    max-width: 430px;
+  }
+
+  .memory-photo {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .letter-card {
+    padding: 22px;
+  }
+
+  .content-screen {
+    padding-top: 40px;
+  }
+}
