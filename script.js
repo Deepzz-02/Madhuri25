@@ -5,15 +5,13 @@
    ========================================= */
 
 const birthdayConfig = {
-  friendName: "okay"
+  friendName: "Mam"
 };
-
 /* =========================================
    HTML ELEMENTS
    ========================================= */
 
 const screens = document.querySelectorAll(".screen");
-
 const openGiftButton = document.getElementById("open-gift");
 const celebrateButton = document.getElementById("celebrate");
 const restartButton = document.getElementById("restart");
